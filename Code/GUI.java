@@ -14,7 +14,7 @@ public class GUI {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        System.out.println("Hello");
 
 
         JButton aboutButton = new JButton("ABOUT");
