@@ -16,20 +16,6 @@ public class MainWindow extends JFrame {
     MainWindow(){
         //Creating a new panel
         JPanel mainPanel = new JPanel();
-        JPanel setProfilePanel = new JPanel();
-        JPanel ProfilePanel = new JPanel();
-        JPanel AboutPanel = new JPanel();
-        setProfilePanel.setVisible(false);
-        ProfilePanel.setVisible(false);
-        AboutPanel.setVisible(false);
-        mainPanel.setVisible(true);
-
-
-        //Panel properties
-        add(mainPanel);
-        //add(setProfilePanel);
-        //add(ProfilePanel);
-        //add(AboutPanel);
 
 
         var AboutButton = new JButton("About");
@@ -46,7 +32,6 @@ public class MainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainPanel.setVisible(false);
-                AboutPanel.setVisible(true);
             }
         });
 
@@ -54,12 +39,11 @@ public class MainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainPanel.setVisible(false);
-                setProfilePanel.setVisible(true);
             }
         });
 
 
-        //Set Profile Panel Components
+        /*//Set Profile Panel Components
         setProfilePanel.setLayout(new GridLayout(2,2));
         var firstNameDisplay = new TextField(20);
         var emailDisplay = new TextField(50);
@@ -68,18 +52,18 @@ public class MainWindow extends JFrame {
         setProfilePanel.add(firstNameDisplay);
         setProfilePanel.add(firstNameButton);
         setProfilePanel.add(emailDisplay);
-        setProfilePanel.add(emailButton);
+        setProfilePanel.add(emailButton);*/
 
+/*
         firstNameButton.addActionListener(e -> firstName = firstNameDisplay.getText());
         emailButton.addActionListener(e -> email = emailDisplay.getText());
+*/
 
         //About Panel Components
         var ProfileButton = new JButton("Profile");
         ProfileButton.setPreferredSize(new Dimension(100,60));
         var AboutCompanyButton = new JButton("About Developers");
         AboutCompanyButton.setPreferredSize(new Dimension(100,60));
-        AboutPanel.add(ProfileButton);
-        AboutPanel.add(AboutCompanyButton);
 
         var AboutCompanyPanel = new JPanel();
         add(AboutCompanyPanel);
@@ -90,7 +74,6 @@ public class MainWindow extends JFrame {
         JTextArea profileInfo = new JTextArea();
         profileInfo.setText("First Name: \n" +
                 "Email: \n");
-        ProfilePanel.add(profileInfo);
 
 
         ProfileButton.addActionListener(new ActionListener() {
@@ -102,13 +85,13 @@ public class MainWindow extends JFrame {
                 } else{
                     profileInfo.setText("First Name: "  + firstName + "\n" +
                             "Email: " + email);
-                    ProfilePanel.setVisible(true);
                 }
             }
         });
 
 
-
+        //Panel properties
+        add(mainPanel);
 
         //Main Window Properties
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
