@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.PriorityQueue;
 
 public class MainWindow extends JFrame {
     private static final int DEFAULT_WIDTH = 600;
@@ -14,6 +12,7 @@ public class MainWindow extends JFrame {
     public static String firstName;
     public static String email;
     private ArrayList<String> developers = new ArrayList<String>();
+    public static JPanel mainPanel = new JPanel();
 
     MainWindow(){
         //Adding the Developers of the app
@@ -21,11 +20,14 @@ public class MainWindow extends JFrame {
         developers.add("Salahuddin Majed");
         developers.add("Alay Kidane");
         developers.add("Arshdeep Singh");
+        getContentPane().add(mainPanel);
+        generateMenuPanel();
+        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        setVisible(true);
+    }
 
-
-        //Creating a new panel
-        JPanel mainPanel = new JPanel();
-
+    public void generateMenuPanel(){
+        mainPanel.removeAll();
         var AboutButton = new JButton("About");
         AboutButton.setPreferredSize(new Dimension(100,60));
         AboutButton.setVisible(true);
@@ -39,33 +41,113 @@ public class MainWindow extends JFrame {
         AboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                getContentPane().removeAll();
-                var AboutPanel = new AboutPanel(firstName, email, developers);
-                AboutPanel.setVisible(true);
-                getContentPane().add(AboutPanel);
-
-                validate();
+                AboutPanel();
             }
         });
 
         SetProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                getContentPane().removeAll();
-                var newSetProfilePanel = new SetProfilePanel(firstName, email);
-                newSetProfilePanel.setVisible(true);
-                getContentPane().add(newSetProfilePanel);
-
-                validate();
+                SetProfilePanel();
             }
         });
+        revalidate();
+        repaint();
+    }
 
+    public void SetProfilePanel(){
+        mainPanel.removeAll();
+        var firstNameDisplay = new TextField(20);
+        firstNameDisplay.setPreferredSize(new Dimension(20,50));
+        var emailDisplay = new TextField(50);
+        emailDisplay.setPreferredSize(new Dimension(20,50));
+        var firstNameButton = new JButton("Set First Name");
+        var emailButton = new JButton("Set Email");
+        var backButton = new JButton("Back");
+        mainPanel.add(firstNameDisplay);
+        mainPanel.add(firstNameButton);
+        mainPanel.add(emailDisplay);
+        mainPanel.add(emailButton);
+        mainPanel.add(backButton);
 
-        //Panel properties
-        getContentPane().add(mainPanel);
+        firstNameButton.addActionListener(e -> { firstName = firstNameDisplay.getText();
+        });
+        emailButton.addActionListener(e -> email = emailDisplay.getText());
+        backButton.addActionListener(e -> generateMenuPanel());
+        revalidate();
+        repaint();
+    }
 
-        //Main Window Properties
-        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-        setVisible(true);
+    public void AboutPanel(){
+        mainPanel.removeAll();
+        var text = new JTextArea();
+        if (firstName == null || email == null) {
+            text.setText("This is registered to no one\n");
+            addDevelopers(text, developers);
+        } else {
+            text.setText("This app is registered to: " + firstName);
+            addDevelopers(text, developers);
+        }
+        var backButton = new JButton("Back");
+        mainPanel.add(text);
+        mainPanel.add(backButton);
+        backButton.addActionListener(e -> generateMenuPanel());
+        revalidate();
+        repaint();
+    }
+
+    private void addDevelopers(JTextArea textArea, ArrayList<String> developers){
+        textArea.append("This app is provided by: \n");
+        for (String text: developers
+        ) {
+            textArea.append(text + "\n");
+        }
+    }
+}
+
+class AboutPanel extends JPanel {
+    AboutPanel(String UserFirstName, String UserEmail, ArrayList<String> developers){
+        var text = new JTextArea();
+        if (UserFirstName == null || UserEmail == null) {
+            text.setText("This is registered to no one\n");
+            addDevelopers(text, developers);
+        } else {
+            text.setText("This app is registered to: " + UserFirstName);
+            addDevelopers(text, developers);
+        }
+        add(text);
+    }
+
+    private void addDevelopers(JTextArea textArea, ArrayList<String> developers){
+        textArea.append("This app is provided by: \n");
+        for (String text: developers
+        ) {
+            textArea.append(text + "\n");
+        }
+    }
+
+}
+
+class SetProfilePanel extends JPanel
+{
+    //Default constructor
+    SetProfilePanel(String Name, String usermail) {
+        setSize(new Dimension(600, 600));
+        //Set Profile Panel Components
+        //setLayout(new GridLayout(2, 2));
+        var firstNameDisplay = new TextField(20);
+        firstNameDisplay.setPreferredSize(new Dimension(20,50));
+        var emailDisplay = new TextField(50);
+        emailDisplay.setPreferredSize(new Dimension(20,50));
+        var firstNameButton = new JButton("Set First Name");
+        var emailButton = new JButton("Set Email");
+        add(firstNameDisplay);
+        add(firstNameButton);
+        add(emailDisplay);
+        add(emailButton);
+
+        firstNameButton.addActionListener(e -> { MainWindow.firstName = firstNameDisplay.getText();
+        });
+        emailButton.addActionListener(e -> MainWindow.email = emailDisplay.getText());
     }
 }
