@@ -4,19 +4,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class MainWindow extends JFrame {
     private static final int DEFAULT_WIDTH = 600;
     private static final int DEFAULT_HEIGHT = 600;
-    private String firstName;
-    private String email;
-
+    public static String firstName;
+    public static String email;
+    private ArrayList<String> developers = new ArrayList<String>();
 
     MainWindow(){
+        //Adding the Developers of the app
+        developers.add("Mark Andrey Rubio - this app needs more work.");
+        developers.add("Salahuddin Majed");
+        developers.add("Alay Kidane");
+        developers.add("Arshdeep Singh");
+
+
         //Creating a new panel
         JPanel mainPanel = new JPanel();
-
 
         var AboutButton = new JButton("About");
         AboutButton.setPreferredSize(new Dimension(100,60));
@@ -31,71 +39,33 @@ public class MainWindow extends JFrame {
         AboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPanel.setVisible(false);
+                getContentPane().removeAll();
+                var AboutPanel = new AboutPanel(firstName, email, developers);
+                AboutPanel.setVisible(true);
+                getContentPane().add(AboutPanel);
+
+                validate();
             }
         });
 
         SetProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPanel.setVisible(false);
-            }
-        });
+                getContentPane().removeAll();
+                var newSetProfilePanel = new SetProfilePanel(firstName, email);
+                newSetProfilePanel.setVisible(true);
+                getContentPane().add(newSetProfilePanel);
 
-
-        /*//Set Profile Panel Components
-        setProfilePanel.setLayout(new GridLayout(2,2));
-        var firstNameDisplay = new TextField(20);
-        var emailDisplay = new TextField(50);
-        var firstNameButton = new JButton("Set First Name");
-        var emailButton = new JButton("Set Email");
-        setProfilePanel.add(firstNameDisplay);
-        setProfilePanel.add(firstNameButton);
-        setProfilePanel.add(emailDisplay);
-        setProfilePanel.add(emailButton);*/
-
-/*
-        firstNameButton.addActionListener(e -> firstName = firstNameDisplay.getText());
-        emailButton.addActionListener(e -> email = emailDisplay.getText());
-*/
-
-        //About Panel Components
-        var ProfileButton = new JButton("Profile");
-        ProfileButton.setPreferredSize(new Dimension(100,60));
-        var AboutCompanyButton = new JButton("About Developers");
-        AboutCompanyButton.setPreferredSize(new Dimension(100,60));
-
-        var AboutCompanyPanel = new JPanel();
-        add(AboutCompanyPanel);
-        AboutCompanyPanel.setVisible(false);
-
-
-        //ProfilePanel Components
-        JTextArea profileInfo = new JTextArea();
-        profileInfo.setText("First Name: \n" +
-                "Email: \n");
-
-
-        ProfileButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //What to do when profile button is pressed
-                if (firstName == null || email == null) {
-                    JOptionPane.showMessageDialog(new JFrame(), "First Name or Email fields are empty!");
-                } else{
-                    profileInfo.setText("First Name: "  + firstName + "\n" +
-                            "Email: " + email);
-                }
+                validate();
             }
         });
 
 
         //Panel properties
-        add(mainPanel);
+        getContentPane().add(mainPanel);
 
         //Main Window Properties
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setVisible(true);
-        setLayout(null);
     }
 }
