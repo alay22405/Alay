@@ -21,10 +21,10 @@ public class MainWindow extends JFrame {
      **/
     MainWindow(){
         //Adding the Developers of the app
-        developers.add("Mark Andrey Rubio - this app needs more work.");
-        developers.add("Salahuddin Majed");
-        developers.add("Alay Kidane");
-        developers.add("Arshdeep Singh");
+        developers.add("Mark Andrey Rubio - Mark.");
+        developers.add("Salahuddin Majed - Salahuddin");
+        developers.add("Alay Kidane - Alay");
+        developers.add("Arshdeep Singh - Singh");
 
         //adding the main panel to the frame
         getContentPane().add(mainPanel);
