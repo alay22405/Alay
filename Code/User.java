@@ -3,7 +3,7 @@ package Code;
 
 /**
  * An class to store user information such as First Name and Email
- * @Author Mark.txt Andrey Rubio
+ * @Author Mark Andrey Rubio
  * */
 public class User {
     public String getEmail() {

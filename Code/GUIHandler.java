@@ -1,6 +1,5 @@
 package Code;
 
-import Code.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,8 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class GUIHandler extends JFrame {
@@ -32,7 +29,7 @@ public class GUIHandler extends JFrame {
     /**
      * Creates the main window, and add the main panel to the frame.
      * It also adds all the names of the developers into an ArrayList
-     * @Author Mark.txt Andrey Rubio
+     * @Author Mark Andrey Rubio
      **/
     GUIHandler(){
         //Adding the Developers of the app
@@ -63,6 +60,7 @@ public class GUIHandler extends JFrame {
 
     /**
      * Generates a sign in panel and checks whether they exist or not already
+     * @Author Mark Andrey Rubio
      * */
     public void generateSignInPanel(){
         //remove any pre-existing GUI components
@@ -111,7 +109,7 @@ public class GUIHandler extends JFrame {
 
     /***
      * Adds all the buttons of the main menu to the main panel and their events.
-     * @Author Mark.txt Andrey Rubio
+     * @Author Mark Andrey Rubio
      **/
     public void generateMenuPanel(){
         //remove any pre-existing GUI components
@@ -151,7 +149,7 @@ public class GUIHandler extends JFrame {
 
     /**
      * Resets the main panel and adds the set profile gui components
-     * @Author Mark.txt Andrey Rubio
+     * @Author Mark Andrey Rubio
      * **/
     public void SetProfilePanel(){
         //remove any pre-existing GUI components
@@ -181,7 +179,7 @@ public class GUIHandler extends JFrame {
 
     /**
      * Resets the main panel and adds about panel components
-     * @Author Mark.txt Andrey Rubio
+     * @Author Mark Andrey Rubio
      * **/
     public void AboutPanel(){
         //remove any pre-existing GUI components

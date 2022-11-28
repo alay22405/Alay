@@ -20,7 +20,7 @@ public class FilesHandler {
      * Creates a list of users from pre-existing users.
      * @param folder a folder containing .txt files that has information necessary to create a new user
      * @return an ArrayList of pre-existing users of type User
-     * @Author Mark.txt Andrey Rubio
+     * @Author Mark Andrey Rubio
      */
     public ArrayList<User> generateUsersFromPackageOrFolder(File folder){
         ArrayList<User> users = new ArrayList<>();
@@ -50,13 +50,24 @@ public class FilesHandler {
         return users;
     }
 
+
+    /**
+     * Creates .txt files for all users of the application.
+     * @param users an ArrayList containing User objects.
+     * @Author Mark Andrey Rubio
+     */
     public void generateUserFilesAfterWindowClosed(ArrayList<User> users){
         for (User user: users) {
             generateNewFile(user);
         }
     }
 
-    private File generateNewFile(User user){
+    /**
+     * A private helper method used to create new .txt files and parent it to the AccountFiles directory/folder
+     * @param user a user
+     * @Author Mark Andrey Rubio
+     */
+    private void generateNewFile(User user){
         try {
             File newFile = new File("Code/AccountFiles/"+user.getUserName() + ".txt");
             if (newFile.createNewFile()){
@@ -70,6 +81,5 @@ public class FilesHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
     }
 }
