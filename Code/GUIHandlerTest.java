@@ -2,7 +2,7 @@ package Code;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainWindowTest {
+class GUIHandlerTest {
 
     @org.junit.jupiter.api.Test
     void generateMenuPanel() {

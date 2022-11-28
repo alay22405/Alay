@@ -8,9 +8,8 @@ public class Main {
     public static void main(String[] args) {
         EventQueue.invokeLater(()->
                 {
-                    var mainWindow = new MainWindow();
+                    var mainWindow = new GUIHandler();
                     mainWindow.setTitle("SAMA- Information Organizer Application" + " " + appVersion);
-                    mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     mainWindow.setVisible(true);
          }
         );
