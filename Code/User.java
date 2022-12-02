@@ -1,6 +1,4 @@
 package Code;
-
-
 /**
  * An class to store user information such as First Name and Email
  * @Author Mark Andrey Rubio
