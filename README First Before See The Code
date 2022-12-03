@@ -7,5 +7,12 @@ SINGH
 
 We are currently working: As a user I want to export and import other information in the application.
 So, As a reviewer, you are welcome to give us a feedback for what we have worked so far.
-And, ............
+
+The SAMA’s project design aims are to capture functionality and simplicity of the client's desired application 
+while creating a User Friendly UI.  The client’s desire is to implement a program that can store user settings 
+that can be applied to other devices.  Additionally, they want to be able to store other types of information to the application.
+For that reason, we created a design capable of storing user settings such as First Name and Email and text files that contain other
+types of information they would like to store into the application along a user will be able to export and import settings for synchronization
+to other devices.
+
 
