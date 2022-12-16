@@ -212,10 +212,7 @@ public class GUIHandler extends JFrame {
         revalidate();
         repaint();
     }
-
-
-
-
+    
     /**
      * Creates a new JFileChooser that imports a .txt file into the account files directory/folder.
      * @author Mark Andrey Rubio
